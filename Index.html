@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal UKBI - SMP PGRI 1 Kuwarasan Tahun 2026/2027</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+  <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+    <!-- Header -->
+    <div class="text-center space-y-2">
+      <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+        Tahun Ajaran 2026/2027
+      </span>
+      <h1 class="text-2xl font-bold text-slate-800">Portal Akses UKBI Siswa</h1>
+      <p class="text-slate-500 text-sm">SMP PGRI 1 Kuwarasan</p>
+    </div>
+
+    <!-- Form Pencarian Data -->
+    <div class="space-y-4">
+      <div>
+        <label for="nisnInput" class="block text-sm font-medium text-slate-700 mb-1">Masukkan NISN / Nama Siswa</label>
+        <input type="text" id="nisnInput" placeholder="Contoh: 0081234567" 
+               class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+      </div>
+      <button onclick="cariSiswa()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition duration-200">
+        Cari Data Akun UKBI
+      </button>
+    </div>
+
+    <!-- Card Hasil Pencarian Data (Dynamic) -->
+    <div id="hasilData" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+      <div class="flex items-center space-x-4">
+        <!-- Foto dari Google Drive -->
+        <img id="fotoSiswa" src="https://via.placeholder.com/80" alt="Foto Siswa" class="w-20 h-20 rounded-full object-cover border-2 border-blue-500">
+        <div>
+          <h3 id="namaSiswa" class="font-bold text-slate-800 text-lg">-</h3>
+          <p id="kelasSiswa" class="text-sm text-slate-500">Kelas: -</p>
+          <p id="nisnSiswa" class="text-xs text-slate-400">NISN: -</p>
+        </div>
+      </div>
+
+      <!-- Detail Kredensial -->
+      <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2 text-sm">
+        <div class="flex justify-between items-center">
+          <span class="text-slate-500">Username UKBI:</span>
+          <span id="usernameUKBI" class="font-mono font-semibold text-slate-800">-</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-500">Password / PIN:</span>
+          <span id="passwordUKBI" class="font-mono font-semibold text-slate-800">-</span>
+        </div>
+      </div>
+
+      <!-- CTA Tombol Pengalihan -->
+      <a href="https://ukbi.kemendikdasmen.go.id/simulasi" target="_blank" 
+         class="block text-center w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-md">
+        Lanjut ke Simulasi UKBI Kemendikdasmen &rarr;
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function cariSiswa() {
+      // Prototyping Mode: Mensimulasikan pengambilan data dari Google Sheets & Drive
+      document.getElementById('hasilData').classList.remove('hidden');
+      document.getElementById('namaSiswa').innerText = "Siswa SMP PGRI 1 Kuwarasan";
+      document.getElementById('kelasSiswa').innerText = "Kelas 9A";
+      document.getElementById('nisnSiswa').innerText = document.getElementById('nisnInput').value || "0081234567";
+      document.getElementById('usernameUKBI').innerText = "ukbi_0081234567";
+      document.getElementById('passwordUKBI').innerText = "Pass2026#";
+      
+      // Foto dapat dihubungkan ke ID File Drive (https://lh3.googleusercontent.com/d/{FILE_ID})
+      document.getElementById('fotoSiswa').src = "https://via.placeholder.com/80/0284c7/ffffff?text=FOTO";
+    }
+  </script>
+</body>
+</html>
